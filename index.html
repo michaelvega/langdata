@@ -13,16 +13,19 @@
   <script src="https://unpkg.com/scrollama"></script>
   <style>
     /* Basic styling */
-    body {
+    html, body {
       margin: 0;
       font-family: Arial, sans-serif;
+      height: 100%;
+      scroll-behavior: smooth;
+      overflow-y: scroll;
     }
 
     #banner {
       position: relative;
       width: 100%;
       height: 100vh;
-      background-image: url(''); /* Placeholder image URL */
+      background-image: url('covidvid-ezgif.com-optimize.gif'); /* Placeholder image URL */
       background-size: cover;
       background-position: center;
       display: flex;
@@ -42,7 +45,7 @@
     #scrolly {
       position: relative;
       display: flex;
-      background-color: #f3f3f3;
+      background-color: #ffffff;
       padding: 1rem;
     }
 
@@ -61,22 +64,26 @@
       top: 0;
       width: 100%;
       margin: 0;
-      background-color: #8a8a8a;
+      background-color: #d3d3d3; /*background of THE ONE*/
       z-index: 0;
     }
 
     figure .figure-content {
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 80vh; /* Existing height */
+      display: flex;           /* Add this line */
+      align-items: center;     /* Add this line */
+      justify-content: center; /* Optional: centers content horizontally */
+      padding-top: 6%; /* Adds 10% padding to top and bottom */
     }
 
     .step {
       margin: 0 auto 2rem auto;
-      background-color: #3b3b3b;
-      color: #fff;
-      opacity: 0;
-      transition: opacity 0.5s ease-in-out;
+      background-color: #3b3b3b; /* Dark grey background */
+      color: #fff; /* White text */
+      opacity: 0.5; /* Partially transparent when not active */
+      transition: opacity 0.5s ease-in-out, background-color 0.5s ease-in-out, color 0.5s ease-in-out;
     }
 
     .step:last-child {
@@ -84,18 +91,15 @@
     }
 
     .step.is-active {
-      background-color: goldenrod;
-      color: #3b3b3b;
+      background-color: goldenrod; /* Highlighted background */
+      color: #3b3b3b; /* Dark text */
+      opacity: 1; /* Fully opaque when active */
     }
 
     .step p {
       text-align: left;
       padding: 1rem;
       font-size: 1.2rem;
-    }
-
-    .step.is-active {
-      opacity: 1;
     }
 
     .figure-content {
@@ -151,6 +155,7 @@
   <section id="scrolly">
     <article>
       <!-- Panel 2 (Past Transition) -->
+      <!-- Existing steps -->
       <div class="step" data-step="1">
         <p>"But how did we get here? The technological trends of the 21st century have reshaped the art of language learning. To understand this, we must first examine how these trends emerged in the past."</p>
       </div>
@@ -164,7 +169,79 @@
         <p>"The internet was once dominated by English due to historical and technological factors. This has shifted as other languages have gained prominence."</p>
         <p><strong>Figure 1:</strong> Share of Most Common Languages Spoken on the Web.</p>
       </div>
-      <!-- Continue adding steps for each panel -->
+      <!-- Panel 5 (Past: US ELL Programs) -->
+      <div class="step" data-step="4">
+        <p>"Brick-and-mortar education is not ineffective. Technology did not 'fix' it. In fact, in the US, the supply of English Language Learner (ELL) programs has proportionally kept up with demand."</p>
+        <p><strong>Figure 4 and Figure 9:</strong> Brushing and Linking by State (Scatter Plot or Choropleth)</p>
+      </div>
+      <!-- Panel 6 (Transition to Present) -->
+      <div class="step" data-step="5">
+        <p>"With the modern world and the global adoption of technologies, new trends in language learning began to emerge."</p>
+      </div>
+      <!-- Panel 7 (Present Trends Intro) -->
+      <div class="step" data-step="6">
+        <p>"The rise of digital platforms has transformed how we learn languages today. Let's explore the trends driving this shift."</p>
+      </div>
+      <!-- Panel 7 (Shift in English's Internet Dominance) -->
+      <div class="step" data-step="7">
+        <p>"The dominance of English on the internet has been gradually declining as more content becomes available in other languages."</p>
+        <p><strong>Figure 13:</strong> Percentage of Internet Users and Webpages in English Over Time (1996–2007).</p>
+      </div>
+      <!-- Panel 7 (Search Behavior for Language Learning) -->
+      <div class="step" data-step="8">
+        <p>"Interest in language learning has spiked, particularly during the pandemic, as reflected in search trends."</p>
+        <p><strong>Figure 10:</strong> Google Search Trends from March 1, 2019, to Now.</p>
+        <p><strong>Figure 5:</strong> Search Volumes for Language Learning.</p>
+      </div>
+      <!-- Panel 7 (Language Learning Platforms) -->
+      <div class="step" data-step="9">
+        <p>"Language learning platforms like Duolingo have seen significant growth, with users showing increased interest in non-English languages."</p>
+        <p><strong>Figure 8:</strong> Active Monthly Duolingo Users Worldwide.</p>
+        <p><strong>Figure 2:</strong> Most Popular Languages Studied on Duolingo in 2023.</p>
+      </div>
+      <!-- Panel 7 (User Demographics) -->
+      <div class="step" data-step="10">
+        <p>"Younger generations are driving the growth in language learning, motivated by personal interest and global opportunities."</p>
+        <p><strong>Figure 3:</strong> Language Learning Platform User Age Demographic.</p>
+      </div>
+      <!-- Panel 8 (Transition to Aha) -->
+      <div class="step" data-step="11">
+        <p>"While in the past, people sought to learn languages out of necessity, technology has transformed this into an art of curiosity and cultural exchange."</p>
+      </div>
+      <!-- Panel 9 (Aha Moment: Correlation) -->
+      <div class="step" data-step="12">
+        <p>"Interestingly, there is little correlation between the most multilingual countries and the main users of language learning apps."</p>
+        <p><strong>Figure 11 and Figure 12:</strong> Brushing and Linking for App Usage vs. Global Multilingualism.</p>
+      </div>
+      <!-- Panel 10 (Aha Moment: Diversification) -->
+      <div class="step" data-step="13">
+        <p>"The most desired languages have diversified significantly beyond just English."</p>
+        <p><strong>Figure 6:</strong> Top 10 Most Desired Second Languages (Bar Chart).</p>
+      </div>
+      <!-- Panel 11 (Aha Moment: Motivation Shift) -->
+      <div class="step" data-step="14">
+        <p>"The motivations for learning languages have shifted dramatically, reflecting cultural curiosity and professional aspirations."</p>
+        <p><strong>Figure 7:</strong> Motivational Factors to Learn a Foreign Language Survey (Multi-Bar Chart).</p>
+      </div>
+      <!-- Panel 12 (Main Message) -->
+      <div class="step" data-step="15">
+        <p>"People are increasingly motivated to learn new languages due to cultural curiosity, globalization, and business opportunities. They do so through accessible digital platforms, which prioritize flexibility and engagement over traditional classroom rigidity."</p>
+      </div>
+      <!-- Panel 13 (Future Transition) -->
+      <div class="step" data-step="16">
+        <p>"The future will likely see language learning diversify further with the rapid advancement of technology and globalization."</p>
+      </div>
+      <!-- Panel 14 (Future) -->
+      <div class="step" data-step="17">
+        <p>"To foster a more inclusive and effective language learning environment, platforms and classrooms must blend flexibility and rigor."</p>
+        <p>"The trend of increasing linguistic diversity on the internet must continue."</p>
+        <p>"Global educational systems need to evolve to keep pace with these changes."</p>
+      </div>
+      <!-- Panel 15 (Interactive Visualization) -->
+      <div class="step" data-step="18">
+        <p>"[Interactive D3 visualization summarizing key insights]"</p>
+      </div>
+
       <!-- ... -->
     </article>
 
@@ -195,16 +272,16 @@
 
   // Data for each panel's visuals
   var visuals = [
-    // Panel 2 (since Panel 1 is the banner)
+    // Panel 2
     {
-      type: 'background',
-      content: 'World Map Moving Backwards Placeholder',
+      type: 'image',
+      content: 'worldmapgif.gif',
       alt: 'GIF of a world map moving backwards'
     },
     // Panel 3
     {
-      type: 'd3',
-      content: 'viz-3',
+      type: 'image',
+      content: 'numberofclassroomlearnersbylang.png',
       alt: 'Figure 14: Number of Classroom Learners by Language.'
     },
     // Panel 4
@@ -212,6 +289,96 @@
       type: 'd3',
       content: 'viz-4',
       alt: 'Figure 1: Share of Most Common Languages Spoken on the Web.'
+    },
+    // Panel 5
+    {
+      type: 'd3',
+      content: 'viz-5',
+      alt: 'Figure 4 and Figure 9: Brushing and Linking by State (Scatter Plot or Choropleth)'
+    },
+    // Panel 6
+    {
+      type: 'image',
+      content: 'rocketlaunch.jpg',
+      alt: 'GIF of a rocket launch'
+    },
+    // Panel 7 Intro
+    {
+      type: 'image',
+      content: 'digitalplatforms.jpg',
+      alt: 'Image representing the rise of digital platforms'
+    },
+    // Panel 7 (Shift in English's Internet Dominance)
+    {
+      type: 'd3',
+      content: 'viz-13',
+      alt: 'Figure 13: Percentage of Internet Users and Webpages in English Over Time (1996–2007).'
+    },
+    // Panel 7 (Search Behavior for Language Learning)
+    {
+      type: 'd3',
+      content: 'viz-10-5',
+      alt: 'Figures 10 and 5: Google Search Trends and Search Volumes for Language Learning.'
+    },
+    // Panel 7 (Language Learning Platforms)
+    {
+      type: 'd3',
+      content: 'viz-8-2',
+      alt: 'Figures 8 and 2: Duolingo User Growth and Most Popular Languages Studied.'
+    },
+    // Panel 7 (User Demographics)
+    {
+      type: 'd3',
+      content: 'viz-3',
+      alt: 'Figure 3: Language Learning Platform User Age Demographic.'
+    },
+    // Panel 8 (Transition to Aha)
+    {
+      type: 'image',
+      content: 'languagelearners.jpg',
+      alt: 'Image of language learners using apps'
+    },
+    // Panel 9 (Aha Moment: Correlation)
+    {
+      type: 'd3',
+      content: 'viz-11-12',
+      alt: 'Figures 11 and 12: App Usage vs. Global Multilingualism.'
+    },
+    // Panel 10 (Aha Moment: Diversification)
+    {
+      type: 'd3',
+      content: 'viz-6',
+      alt: 'Figure 6: Top 10 Most Desired Second Languages.'
+    },
+    // Panel 11 (Aha Moment: Motivation Shift)
+    {
+      type: 'd3',
+      content: 'viz-7',
+      alt: 'Figure 7: Motivational Factors to Learn a Foreign Language.'
+    },
+    // Panel 12 (Main Message)
+    {
+      type: 'background',
+      content: 'mainmessage.jpg',
+      alt: 'Background image with bold centered text of the main message'
+    },
+    // Panel 13 (Future Transition)
+    {
+      type: 'image',
+      content: 'worldmovingforward.gif',
+      alt: 'GIF of the world moving forward, symbolizing future possibilities'
+    },
+    // Panel 14 (Future)
+    {
+      type: 'image',
+      content: 'globalcities.jpg',
+      alt: 'Image of interconnected global cities'
+    },
+    // Panel 15 (Interactive Visualization)
+    {
+      type: 'd3',
+      content: 'viz-interactive',
+      alt: 'Interactive D3 visualization summarizing key insights'
     },
     // Continue adding visuals for other panels
     // ...
@@ -225,9 +392,18 @@
     });
 
     // Update the figure content based on the current step
-    var visual = visuals[response.index - 1]; // Adjust index since visuals start from Panel 2
+    var visual = visuals[response.index]; // Use response.index directly
     if (visual) {
-      if (visual.type === 'background') {
+      if (visual.type === 'image') {
+        // Adjusted styles for the image
+        figureContent.html(
+                '<img src="' +
+                visual.content +
+                '" alt="' +
+                visual.alt +
+                '" style="max-width:100%; max-height:100%;">'
+        );
+      } else if (visual.type === 'background') {
         // Show placeholder image with content
         figureContent.html('<div class="placeholder-image">' + visual.content + '</div>');
       } else if (visual.type === 'd3') {
@@ -235,14 +411,14 @@
         figureContent.html('<div class="placeholder-d3" id="' + visual.content + '"></div>');
         // Draw blue circle as placeholder
         d3.select('#' + visual.content)
-          .append('svg')
-          .attr('width', '100%')
-          .attr('height', '100%')
-          .append('circle')
-          .attr('cx', '50%')
-          .attr('cy', '50%')
-          .attr('r', 50)
-          .attr('fill', 'blue');
+                .append('svg')
+                .attr('width', '100%')
+                .attr('height', '100%')
+                .append('circle')
+                .attr('cx', '50%')
+                .attr('cy', '50%')
+                .attr('r', 50)
+                .attr('fill', 'blue');
       }
       // Add 'is-active' class for fade-in effect
       figureContent.classed('is-active', true);
@@ -258,6 +434,7 @@
       figureContent.classed('is-active', false);
     }
   }
+
 
   function init() {
     // Force a resize on load to ensure proper dimensions are sent to scrollama
@@ -284,7 +461,7 @@
 
     // Update height of figure
     var figureHeight = window.innerHeight;
-    var figureMarginTop = 0;
+    var figureMarginTop = 10;
 
     figure
       .style('height', figureHeight + 'px')
