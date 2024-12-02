@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Scrollytelling Story</title>
+  <meta name="description" content="Scrollytelling Story" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Include D3.js -->
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <!-- Include Scrollama.js -->
+  <script src="https://unpkg.com/scrollama"></script>
+  <style>
+    /* Basic styling */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    #banner {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background-image: url(''); /* Placeholder image URL */
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start; /* Added for snap scrolling */
+    }
+
+    #banner h1 {
+      color: white;
+      font-size: 3rem;
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    }
+
+    #scrolly {
+      position: relative;
+      display: flex;
+      background-color: #f3f3f3;
+      padding: 1rem;
+    }
+
+    #scrolly>* {
+      flex: 1;
+    }
+
+    article {
+      position: relative;
+      padding: 0 1rem;
+      max-width: 20rem;
+    }
+
+    figure {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      margin: 0;
+      background-color: #8a8a8a;
+      z-index: 0;
+    }
+
+    figure .figure-content {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .step {
+      margin: 0 auto 2rem auto;
+      background-color: #3b3b3b;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .step:last-child {
+      margin-bottom: 0;
+    }
+
+    .step.is-active {
+      background-color: goldenrod;
+      color: #3b3b3b;
+    }
+
+    .step p {
+      text-align: left;
+      padding: 1rem;
+      font-size: 1.2rem;
+    }
+
+    .step.is-active {
+      opacity: 1;
+    }
+
+    .figure-content {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .figure-content.is-active {
+      opacity: 1;
+    }
+
+    /* Placeholder styles */
+    .placeholder-image {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: #666;
+    }
+
+    .placeholder-d3 {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Blue circle placeholder for D3 */
+    .placeholder-d3 svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    section {
+      scroll-snap-align: start; /* Snap to start of each section */
+    }
+
+    main {
+      scroll-snap-type: y mandatory;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Big Banner Section -->
+<section id="banner">
+  <h1>"Did you know that interest in language learning surged during the pandemic, and it's only growing as people become more globally connected?"</h1>
+</section>
+
+<main>
+  <!-- Scrollytelling Section -->
+  <section id="scrolly">
+    <article>
+      <!-- Panel 2 (Past Transition) -->
+      <div class="step" data-step="1">
+        <p>"But how did we get here? The technological trends of the 21st century have reshaped the art of language learning. To understand this, we must first examine how these trends emerged in the past."</p>
+      </div>
+      <!-- Panel 3 (Past: Traditional Education) -->
+      <div class="step" data-step="2">
+        <p>"In the past, language learning was confined to traditional classrooms. Today, English dominates these settings."</p>
+        <p><strong>Figure 14:</strong> Number of Classroom Learners by Language.</p>
+      </div>
+      <!-- Panel 4 (Past: Internet Dominance of English) -->
+      <div class="step" data-step="3">
+        <p>"The internet was once dominated by English due to historical and technological factors. This has shifted as other languages have gained prominence."</p>
+        <p><strong>Figure 1:</strong> Share of Most Common Languages Spoken on the Web.</p>
+      </div>
+      <!-- Continue adding steps for each panel -->
+      <!-- ... -->
+    </article>
+
+    <figure>
+      <div class="figure-content" id="figure-content">
+        <!-- Placeholder content will be updated via JavaScript -->
+        <div class="placeholder-image" id="placeholder-image">Placeholder Image</div>
+        <div class="placeholder-d3" id="placeholder-d3"></div>
+      </div>
+    </figure>
+  </section>
+</main>
+
+<!-- Scripts -->
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="https://unpkg.com/scrollama"></script>
+<script>
+  // Select elements
+  var main = d3.select("main");
+  var scrolly = main.select("#scrolly");
+  var figure = scrolly.select("figure");
+  var figureContent = figure.select("#figure-content");
+  var article = scrolly.select("article");
+  var step = article.selectAll(".step");
+
+  // Initialize the scrollama
+  var scroller = scrollama();
+
+  // Data for each panel's visuals
+  var visuals = [
+    // Panel 2 (since Panel 1 is the banner)
+    {
+      type: 'background',
+      content: 'World Map Moving Backwards Placeholder',
+      alt: 'GIF of a world map moving backwards'
+    },
+    // Panel 3
+    {
+      type: 'd3',
+      content: 'viz-3',
+      alt: 'Figure 14: Number of Classroom Learners by Language.'
+    },
+    // Panel 4
+    {
+      type: 'd3',
+      content: 'viz-4',
+      alt: 'Figure 1: Share of Most Common Languages Spoken on the Web.'
+    },
+    // Continue adding visuals for other panels
+    // ...
+  ];
+
+  // Scrollama event handlers
+  function handleStepEnter(response) {
+    // Add 'is-active' class to the current step
+    step.classed('is-active', function (d, i) {
+      return i === response.index;
+    });
+
+    // Update the figure content based on the current step
+    var visual = visuals[response.index - 1]; // Adjust index since visuals start from Panel 2
+    if (visual) {
+      if (visual.type === 'background') {
+        // Show placeholder image with content
+        figureContent.html('<div class="placeholder-image">' + visual.content + '</div>');
+      } else if (visual.type === 'd3') {
+        // Show D3 placeholder visualization
+        figureContent.html('<div class="placeholder-d3" id="' + visual.content + '"></div>');
+        // Draw blue circle as placeholder
+        d3.select('#' + visual.content)
+          .append('svg')
+          .attr('width', '100%')
+          .attr('height', '100%')
+          .append('circle')
+          .attr('cx', '50%')
+          .attr('cy', '50%')
+          .attr('r', 50)
+          .attr('fill', 'blue');
+      }
+      // Add 'is-active' class for fade-in effect
+      figureContent.classed('is-active', true);
+    }
+  }
+
+  function handleStepExit(response) {
+    // Remove 'is-active' class when exiting a step
+    if (response.direction === 'up') {
+      step.classed('is-active', function (d, i) {
+        return i === response.index ? false : d3.select(this).classed('is-active');
+      });
+      figureContent.classed('is-active', false);
+    }
+  }
+
+  function init() {
+    // Force a resize on load to ensure proper dimensions are sent to scrollama
+    handleResize();
+
+    // Setup the scroller passing options
+    scroller.setup({
+      step: '#scrolly article .step',
+      offset: 0.5,
+      debug: false
+    })
+      .onStepEnter(handleStepEnter)
+      .onStepExit(handleStepExit);
+
+    // Setup resize event
+    window.addEventListener('resize', handleResize);
+  }
+
+  // Generic window resize listener event
+  function handleResize() {
+    // Update height of step elements
+    var stepH = Math.floor(window.innerHeight * 0.75);
+    step.style('height', stepH + 'px');
+
+    // Update height of figure
+    var figureHeight = window.innerHeight;
+    var figureMarginTop = 0;
+
+    figure
+      .style('height', figureHeight + 'px')
+      .style('top', figureMarginTop + 'px');
+
+    // Tell scrollama to update new element dimensions
+    scroller.resize();
+  }
+
+  // Kick things off
+  init();
+</script>
+</body>
+
+
+</html>
