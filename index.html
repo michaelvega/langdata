@@ -9,6 +9,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <!-- Include D3.js -->
   <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="Figure14.js"></script>
+  <script src="Figure1.js"></script>
   <!-- Include Scrollama.js -->
   <script src="https://unpkg.com/scrollama"></script>
   <style>
@@ -126,6 +128,10 @@
     .placeholder-d3 {
       width: 100%;
       height: 100%;
+      display: flex;
+      align-items: center; /* Vertical alignment */
+      justify-content: center; /* Horizontal alignment */
+      position: relative; /* Keeps it flexible */
     }
 
     /* Blue circle placeholder for D3 */
@@ -280,14 +286,14 @@
     },
     // Panel 3
     {
-      type: 'image',
-      content: 'numberofclassroomlearnersbylang.png',
+      type: 'd3',
+      content: 'figure14-container', // ID where the treemap will render
       alt: 'Figure 14: Number of Classroom Learners by Language.'
     },
     // Panel 4
     {
       type: 'd3',
-      content: 'viz-4',
+      content: 'figure1-container',
       alt: 'Figure 1: Share of Most Common Languages Spoken on the Web.'
     },
     // Panel 5
@@ -407,18 +413,16 @@
         // Show placeholder image with content
         figureContent.html('<div class="placeholder-image">' + visual.content + '</div>');
       } else if (visual.type === 'd3') {
-        // Show D3 placeholder visualization
+        // Replace content with a container for the D3 visualization
         figureContent.html('<div class="placeholder-d3" id="' + visual.content + '"></div>');
-        // Draw blue circle as placeholder
-        d3.select('#' + visual.content)
-                .append('svg')
-                .attr('width', '100%')
-                .attr('height', '100%')
-                .append('circle')
-                .attr('cx', '50%')
-                .attr('cy', '50%')
-                .attr('r', 50)
-                .attr('fill', 'blue');
+
+        // Check the content ID and call the appropriate D3 function
+        switch (visual.content) {
+          case 'figure14-container':
+            createFigure14('figure14-container');
+          case 'figure1-container':
+            createFigure1('figure1-container');
+        }
       }
       // Add 'is-active' class for fade-in effect
       figureContent.classed('is-active', true);
